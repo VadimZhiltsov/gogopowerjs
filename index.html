@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data manipulations</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      a { color: blue; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+      class: center, middle
+
+      # Javascript
+
+      ---
+      class: center, middle
+
+      # What is IT?
+      ---
+      class: center, middle
+
+      # Information Technology
+      # What is the main in IT?
+
+      ---
+      class: center, middle
+
+      #Data is everywhere
+
+      <img src="http://301-1.ru/gen-mems/img_mems/66d02103f2aebe4727bcef936e96520b.jpg">
+
+      ---
+      class: center, middle
+
+      #Our main goal - learn to manipulations with data
+
+      ---
+      class: center, middle
+
+      #What data types do we have?
+  
+      ---
+      class: middle
+
+      #Primitive data types list:
+      
+      * boolean
+      * number
+      * string
+      * object/hash
+      * array
+      * function
+
+      ---
+      class: middle
+
+      #Boolean
+      * You MUST know how to extcrat <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Boolean">them.</a>
+      * You MUST know how manupulate <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%9B%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B">them.</a>
+      * They'll never forgive your mistake
+
+      ---
+      class: middle
+
+      #Number 
+      ## Just know how to:
+      * <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number/parseFloat">make number from string</a>
+      * <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">make string from number</a>
+      * Make <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a>
+
+      ---
+      class: middle
+
+      #String
+      ## Must know how to:
+      * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat">concatanate strings</a>
+      * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split">split string to many string</a>
+      * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match">Match string</a>
+      * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">Replace substring</a>
+
+      ---
+      class: middle
+
+      #Object/hash
+      ## Add/remove values
+      ```javascript
+        var foo = {};
+        foo.bar = 3;
+        console.log(foo.bar); // 3
+        delete foo.bar;
+        console.log(foo.bar); // undefined
+      ```
+      ---
+      class: middle
+
+      #Object/hash
+      ## check for key appearance
+      ```javascript
+        var foo = {};
+        foo.bar = undefined;
+        
+        if (foo.bar) {
+          console.log(1);
+        }
+
+        if ('bar' in foo) {
+          console.log(2);
+        }
+      ```
+      ---
+      class: middle
+
+      #Object/hash
+      ## Assign multiple properties
+      ```javascript
+        var foo = { a: 1 };
+        var bar = { b: 2, c: 3 };
+        
+        Object.assign(foo, bar);
+
+        /* Now foo is:
+          {
+            a: 1,
+            b: 2,
+            c: 3
+          }
+        */
+      ```
+      ---
+      class: middle
+
+      #Object/hash
+      ## Get object keys
+      ```javascript
+        var foo = {
+          a: 1,
+          b: 2,
+          c: 3
+        };
+        
+        var keys = Object.keys(foo);
+        console.log(foo); // [a, b, c]
+
+      ```
+      ---
+      class: middle
+
+      #Object/hash
+      ## ???
+      ```javascript
+        var fuzz = {
+          a: 1
+        };        
+        var buzz = fuzz;
+        buzz.a++;
+        console.log(fuzz.a);
+        console.log(buzz.a);
+
+        var n = 4;
+        var m = n;
+        m++;
+        console.log(n);
+        console.log(m);
+      ```
+      ---
+      class: middle
+
+      #Object/hash. Understand object references
+      <img style="width: 100%;" src="http://3.bp.blogspot.com/-nxY39B3nwuY/VflqSpvwaSI/AAAAAAAADxE/jh6P6bj_oLQ/s1600/Difference%2Bbetween%2Breference%2Band%2Bprimitive%2Bvariable%2Bin%2BJava.gif">
+      ---
+      class: middle
+
+      #Arrays
+      ### Array is list of any data
+      ```javascript
+        var a = [1, true, "string", null, undefined, new Data()]
+      ```
+
+      ### Arrays are numbered
+      ```javascript
+        var a = [1, true, "string", null, undefined, new Data(),[2]];
+        a[0]; // 1
+        a[1]; // true
+        a[2]; // "string"
+        a[6][0] // 2
+      ```
+      ---
+
+      ### Put value to array:
+      ```javascript
+        var a = [1,2,3,4,5,6];
+        a.push(7);
+        console.log(a); // [1,2,3,4,5,6,7]
+      ```
+
+      ### Join array values to string
+      ```javascript
+        var a = ['The ', ' is the best. ', ' has never gave up.'];
+        var str = a.join('Batman');
+        console.log(str); // The Batman is the best. Batman has never gave up.
+      ```
+      ---
+      class: middle
+
+      #Arrays
+      ### Arrays values can be filtered
+      ```javascript
+        var source = [1,2,3,4,5,6,7];
+
+        const oddValues = source.filter(function(item) {
+          return item%2 === 0;
+        });
+
+        console.log(oddValues); // [2, 4, 6]
+      ```
+
+      ### Each item can be mapped 
+      ```javascript
+        var source = [1,2,3,4,5,6,7];
+
+        const squaredValues = source.map(function(item){
+          return item * item;
+        });
+
+        console.log(squaredValues); //[1, 4, 9, 16, 25, 36, 49]
+      ```
+      ---
+      class: middle
+
+      #Arrays
+      ### Arrays can be sorted;
+      ```javascript
+        var source = [3,2,1,4,7,6,5];
+
+        const sortedValues = source.sort(function(a, b) {
+          if (a > b) {
+            return 1; // any positive number
+          } 
+
+          if (b > a) {
+            return -1; // any negative number
+          }
+
+          if (a === b) {
+            return 0; //zero
+          }
+        });
+
+        console.log(sortedValues); // [1, 2, 3, 4, 5, 6, 7]
+      ```
+      ---
+      class: middle center
+      #Arrays and may <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array">others </a>
+      ---
+      #Самостоятельно:
+      * Изучить <a href="https://ru.wikipedia.org/wiki/JSON"> JSON </a>
+      * Изучить <a href="https://githowto.com/ru">GIT</a>, если ещё не умеете
+      * Кинуть в мне в скайп свой email. Skype: vadim.zhiltsov
+
+      #Решить задачу:
+
+      * Найти первые 40 чисел Фибоначи.
+      * Преобразовать найденные числа. Если число чётное, то отнимаем 2. Если число нечётное, то отнимаем от него 4.
+      * Посчитать среднее значение чётных и не четных преобразованных чисел. (сумму посчитать с помощью <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">reduce</a>)
+      * Выложить задачу на github, скинуть мне ссылку. 
+      ---
+      class: middle center
+      <img src="http://modny.spb.ru/sites/default/files/upload/1.04.14/durov-the-end-533a9cc1143e4.jpg">
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
