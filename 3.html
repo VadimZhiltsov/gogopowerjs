@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data manipulations</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      a { color: blue; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+      class: center, middle
+
+      # Crosslesson
+
+      ---
+      class: center, middle
+
+      # How to add jquery to your webpage?
+      ---
+      class: center, middle
+
+      # jQuery UI depends on specific version of jquery.
+      # How to add jquery ui to your webpage?
+
+      ---
+      class: center, middle
+
+      #How don't care about this?
+
+      ---
+      class: center, middle
+
+      #Answer is - <a href="https://www.npmjs.com/">NPM</a> (Nodejs Package Manager)
+
+      ---
+      class: middle
+
+      #Commands you need to know:
+      * npm init
+      * npm install
+      * npm install -S jquery
+      * npm install --save-dev jquery
+      * npm uninstall jquery
+  
+      ---
+      class: middle
+
+      #npm init creates magic file `package.json`
+
+      ```javascript
+        {
+          "name": "ethopia-waza",
+          "description": "a delightfully fruity coffee varietal",
+          "version": "1.2.3",
+          "dependencies": {
+            "jquery": "~1.6.3"
+          },
+          "devDependencies": {
+            "coffee-script": "~1.6.3"
+          },
+          "scripts": {
+            "prepublish": "coffee -o lib/ -c src/waza.coffee"
+          },
+         "main": "lib/waza.js"
+        }
+      ```
+
+      ---
+      class: middle
+
+      # Who know how we could group our code?
+
+      ---
+      class: middle
+
+      # ES6/ES2015 propose us use import/export syntax
+
+      ```javascript
+      // lib/math.js
+      export function sum(x, y) {
+        return x + y;
+      }
+      export var pi = 3.141593;
+      ```
+
+      ```javascript
+      // app.js
+      import * as math from "lib/math";
+      console.log("2π = " + math.sum(math.pi, math.pi));
+      ```
+
+      ```javascript
+      // otherApp.js
+      import {sum, pi} from "lib/math";
+      console.log("2π = " + sum(pi, pi));
+      ```
+
+      ---
+      class: middle
+
+      #But... This don't works in browsers for now.
+
+      ---
+      class: middle
+
+      #Patience! <a href="https://babeljs.io/">Babel</a> and <a href="http://gulpjs.com/">Gulp</a> will help us!
+
+      ---
+      class: middle
+      
+      ###Babel allows us to use modern code standarts today. It transforms new code styles, which are not supported by modern browsers, to old style.
+      
+      ---
+      class: middle
+
+      #Gulp is simple task runner. It helps us:
+      * transform code using babel
+      * minify code
+      * obfucate code
+      * compile scss/class
+      * make pages live reload when files changes
+
+      ---
+      class: middle center
+      
+      #Some words about OOP:
+
+      ### OOP - is style to describe entities in code.
+      ---
+      class: middle
+      
+      #Class
+      *Class* - scheme witch describes object. Uses as template for new objects.
+
+      ```javascript
+      class Polygon {
+        constructor(height, width) {
+          this.height = height;
+          this.width = width;
+        }
+
+        getSquare() {
+          return this.width * this.height;
+        }
+
+        getPerimiter() {
+          return this.width * 2 + this.height * 2;
+        }
+      }
+
+      var smallPolygon = new Polygon(10, 20)
+      smallPolygon.getSquare(); // 200
+      
+      var bigPolygon = new Polygon(100, 200)
+      bigPolygon.getSquare(); // 20000
+      ```
+      ---
+      class: middle
+      
+      #Extention
+
+      ```javascript
+      class Animal {
+        constructor(name, saySound) {
+          this.name = name;
+          this.saySound = saySound;
+        }
+
+        sayName() {
+          return this.saySound;
+        }
+      }
+
+      class Human extends Animal {
+        sayName() {
+          return 'I am' this.name + ' and I am sexy and I know it';
+        } 
+      }
+
+      var totoshka = new Animal('Totoshka', 'Гав!');
+      var doroty = new Human('Doroty');
+
+      ```
+
+      ---
+      class: middle
+
+      #Encapsulation
+
+      ## sorry, but not for javascript
+
+      ---
+      class: middle
+
+      #Workshop
+      * We will use all features from presentation to write our own slider
+
+      ---
+      #Самостоятельно:
+      * Читать: <a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BD%D0%BE-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5"> ООП </a>
+      * Прочитать про новые фичи в <a href="https://babeljs.io/docs/learn-es2015/">ES2015</a> и попробовать их с помощью <a href="https://jsfiddle.net/4xsd3xeL/">JSFiddle</a>
+      * Изучить популярные плагины для <a href="https://blog.nodejitsu.com/npmawesome-9-gulp-plugins/">Babel</a>
+
+      #Решить задачу:
+
+      * Закончить карусель, если не успели.
+      * Каты
+      ---
+      class: middle center
+      <img src="http://modny.spb.ru/sites/default/files/upload/1.04.14/durov-the-end-533a9cc1143e4.jpg">
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
