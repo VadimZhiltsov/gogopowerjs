@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data manipulations</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-inline-code { 
+        padding: .2em;
+        margin: 0;
+        font-size: .9em;
+        background-color: #f7f7f7;
+      }
+      em {
+        font-size: .9em
+      }
+
+      a { color: blue; text-decoration: none; }
+
+      .two-column {
+        display: flex;
+      }
+
+      .two-column > * {
+        width: 50%;
+      }
+
+      tr {
+        padding: 1rem 0;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      td:first-child {
+        padding-right: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+      class: center, middle
+
+      # DOM
+
+
+      ---
+      #How we can find element:
+
+      * document.querySelector('css selector');
+      * document.querySelectorAll('css selector');
+      * element.querySelector('css selector');
+      * element.querySelectorAll('css selector');
+
+      ---
+      #Find parent
+      const node = document.queryElement('#id');
+      const parentNode = node.parentNode;
+
+      #Attach event listener
+
+      const node = document.queryElement('#id');
+      node.addEventListener('click', () => {
+        alert("don\'t press on me")
+      });
+
+      ---
+
+      #Create new element
+      ```
+        var division = document.createElement('div')
+      ```
+
+      #Attach elements
+      ```
+        document.body.appendChild(division);
+      ```
+
+      #Remove elements from DOM
+      ```
+        document.body.removeChild(division);
+      ```
+
+      ---
+      class: center, middle
+
+      #Document Fragment DEMO
+      
+
+
+      ---
+
+      class: center, middle
+
+      # HTTP
+
+
+      ---
+      # HTTP request
+
+      ```
+      GET /some-page HTTP/1.1
+      Host: ponnyhub.com
+      User-Agent: Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9b5) Gecko/2008050509 Firefox/3.0b5
+      Accept: text/html
+      Connection: close 
+      (пустая строка) 
+      ```
+
+      ---
+      # HTTP response
+
+      ```
+      HTTP/1.1 200 OK
+      Date: Wed, 11 Feb 2009 11:20:59 GMT
+      Server: Apache
+      X-Powered-By: PHP/5.2.4-2ubuntu5wm1
+      Last-Modified: Wed, 11 Feb 2009 11:20:59 GMT
+      Content-Language: ru
+      Content-Type: text/html; charset=utf-8
+      Content-Length: 1234
+      Connection: close
+      (пустая строка)
+      (далее следует запрошенная страница в HTML)
+      ```
+
+      ---
+
+      class: center, middle
+      #some words about HTTP2
+
+      ---
+
+
+      #<a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP">Код состояния http</a>
+
+      <table>
+        <tr><th>Код</th><th>Суть</th></tr>
+        <tr><td>1xx <br>Информационный</td><td>Информирование о процессе передачи </td></tr>
+        <tr><td>2xx <br>Успех</td><td>Информирование о случаях успешного принятия и обработки запроса клиента. </td></tr>
+        <tr><td>3xx <br>Перенаправление </td><td>ИнформированиеСообщает клиенту, что для успешного выполнения операции необходимо сделать другой запрос. (как правило по другому URI)</td></tr>
+        <tr><td>4xx <br>Ошибка клиента</td><td>Указание ошибок со стороны клиента.  </td></tr>
+        <tr><td>5xx <br>Ошибка сервера</td><td>Информирование о случаях неудачного выполнения операции по вине сервера. </td></tr>
+
+      </table>
+
+      ---
+      class: middle center
+      #Rest
+
+      <img src="http://d38wlcdzwz02m5.cloudfront.net/about/cdn/farfuture/nE-mwHmuKPpcTXsv9uN-C3be1AprziBfxsYlNaJOC9o/mtime:1441380349/sites/mktg-new/files/Prag_REST_CRUD_thumb.png" style="width: 100%">
+
+      ---
+
+      #How to make request using javascript
+      ##Using <a href="https://developer.mozilla.org/ru/docs/XMLHttpRequest">XML HTTP Request</a>
+
+      ```
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('GET', '/xhr/test.html', true);
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4) {
+            if(xmlhttp.status == 200) {
+               alert(xmlhttp.responseText);
+            }
+          }
+        };
+        xmlhttp.send(null);
+      ```
+
+      ---
+      #How to make request using javascript
+      ##Using <a href="http://api.jquery.com/jquery.ajax/">jQuery ajax</a>
+      ```
+      const request = $.ajax("example.php")
+      request.done(function(data) {
+        alert( data);
+      });
+      ```
+      ---
+      #How to make request using javascript
+      ## Using <a href="https://learn.javascript.ru/fetch">fetch</a>
+
+      ```
+      fetch('/article/fetch/user.json')
+      .then(function(response) {
+        return response.json();
+       })
+      .then(function(data) {
+        alert(data);
+      });
+      ```
+      ---
+      # Working together. Build user list:
+      ###https://jsonplaceholder.typicode.com/users
+
+      ---
+
+      class: middle center
+      <img src="http://modny.spb.ru/sites/default/files/upload/1.04.14/durov-the-end-533a9cc1143e4.jpg">
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
