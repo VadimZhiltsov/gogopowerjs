@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data manipulations</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-inline-code { 
+        padding: .2em;
+        margin: 0;
+        font-size: .9em;
+        background-color: #f7f7f7;
+      }
+      em {
+        font-size: .9em
+      }
+
+      a { color: blue; text-decoration: none; }
+
+      .two-column {
+        display: flex;
+      }
+
+      .two-column > * {
+        width: 50%;
+      }
+
+      tr {
+        padding: 1rem 0;
+      }
+
+      th {
+        text-align: left;
+      }
+
+      td:first-child {
+        padding-right: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+      class: center, middle
+
+      # Node.js
+
+      ---
+      class: center, middle
+
+      #Front-end vs Server side
+      
+      ---
+      class: center, middle
+
+      #It's good because savings on I/O
+
+      ---
+
+      #Common cases to use Node.js
+
+      * Create HTTP back-end
+      * Write <a href="https://ru.wikipedia.org/wiki/Cron">CRON</a> tasks
+      * Custom back-end scripting
+
+
+
+      ---
+
+      #Simple web server example
+
+      ```javascript
+      const http = require("http");
+
+      http.createServer(function(request, response) {
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("Hello World");
+        response.end();
+
+      }).listen(8888);
+
+      ```
+
+      ---
+
+      # TODO:
+      ## Создать веб сервер
+      ## Он должен показывать сколько раз делался HTTP запрос на страницу
+      ## Если запросов было больше 10, то сервер должен возвращать 400 статус
+
+      ---
+
+      class: center, middle
+
+      # CGI vs statefull application
+
+      ---
+
+      # Get request body
+
+      ```javascript
+        var body = [];
+        request.on('data', function(chunk) {
+          body.push(chunk);
+        }).on('end', function() {
+          body = Buffer.concat(body).toString();
+          // at this point, `body` has the entire request body stored in it as a string
+        });
+      ```
+
+      ---
+      class: center, middle
+
+      #Routing
+
+      ```
+      http.createServer(function(request, response) {
+        console.log(request.url);
+
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("Hello World");
+        response.end();
+
+      }).listen(8888);
+      ```
+
+      ---
+      #Read files:
+
+      ```javascript
+      const fs = require('fs')
+      fs.readFile('/etc/hosts', 'utf8', function (err,data) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(data);
+      });
+      ```
+
+      ---
+
+      #Write file:
+
+      ```javascript
+      var fs = require('fs');
+      fs.writeFile("/tmp/test", "Hey there!", function(err) {
+          if(err) {
+              return console.log(err);
+          }
+
+          console.log("The file was saved!");
+      }); 
+      ```
+
+      ---
+      class: center, middle
+
+      # Let's write back-end for our Users manager
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
