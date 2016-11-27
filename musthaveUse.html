@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data manipulations</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-inline-code { background: #e2e4e6; }
+      a { color: blue; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+  <textarea id="source">
+
+class: center, middle
+
+# Что использовать:
+
+---
+class: middle
+
+## Moment.js 
+```javascript
+moment().format('MMMM Do YYYY, h:mm:ss a'); // November 27th 2016, 12:55:40 am
+moment().format('dddd');                	// Sunday
+moment().format("MMM Do YY");               // Nov 27th 16
+moment().format('YYYY [escaped] YYYY');     // 2016 escaped 2016
+moment().format();                          // 2016-11-27T00:55:40+02:00
+moment().format('MMMM Do YYYY, h:mm:ss a'); // November 27th 2016, 12:55:40 am
+moment().format('dddd');                    // Sunday
+moment().format("MMM Do YY");               // Nov 27th 16
+moment().format('YYYY [escaped] YYYY');     // 2016 escaped 2016
+moment().format();                          // 2016-11-27T00:55:40+02:00
+
+```
+
+---
+class: center middle
+ 
+
+
+##jQuery - must know
+
+---
+class: center, middle
+
+##C3.js
+
+
+<a href='http://c3js.org/samples/chart_donut.html'>Простые и крутые графики</a>
+
+---
+class: center, middle
+
+<a href="https://lodash.com/
+http://underscorejs.org/"><h2>lodash/underscore</h2></a>
+
+
+---
+class: center, middle
+
+##ally.js
+
+Работа с фокусом, табом
+
+---
+class: center, middle
+##Jest 
+Простое и эфективное юнит тестирование 
+
+---
+class: center, middle
+##Swagger.io
+
+---
+class:center, middle
+
+<a href="https://developer.mozilla.org/ru/docs/Web/API/Canvas_API/Tutorial"><h2>Canvas</h2></a>
+
+---
+class: middle
+##Nightwatchjs.org
+
+```javascript
+
+module.exports = {
+  'Demo test Google' : function (client) {
+    client
+      .url('http://www.google.com')
+      .waitForElementVisible('body', 1000)
+      .assert.title('Google')
+      .assert.visible('input[type=text]')
+      .setValue('input[type=text]', 'rembrandt van rijn')
+      .waitForElementVisible('button[name=btnG]', 1000)
+      .click('button[name=btnG]')
+      .pause(1000)
+      .assert.containsText('ol#rso li:first-child',
+        'Rembrandt - Wikipedia')
+      .end();
+  }
+};
+```
+
+---
+class: middle
+
+
+<a href="http://shichuan.github.io/javascript-patterns/"><h2>Learn javascript & javascript-patterns</h2></a>
+
+---
+class: middle
+##Learn any front end framework
+
+* <a href="https://facebook.github.io/react/"><h2>React</h2></a>
+* <a href="https://www.polymer-project.org/"><h2>Polymer</h2></a>
+* <a href="http://emberjs.com/"><h2>Ember</h2></a>
+
+(It's good for foreign market)
+
+---
+class:center, middle
+
+<a href="http://foundation.zurb.com/emails/email-templates.html"><h2>Email templating</h2></a>
+
+---
+class:center, middle
+
+
+<a href="https://github.com/keymetrics/pmx"><h2>Process Manager (back-end)</h2></a>
+
+---
+class:middle
+##Any back end framework
+
+* <a href="http://expressjs.com/ru/"><h2>Expressjs</h2></a>
+* <a href="http://koajs.com/"><h2>Koalajs</h2></a>
+
+---
+class:center,middle
+##DataBase
+<a href="https://www.mongodb.com/"><h2>MongoDB</h2></a>
+
+---
+class: center, middle
+
+
+<a href="https://material.google.com/"><h2>Material (design)</h2></a>
+
+---
+class: middle
+
+##Learn CSS preprocessors
+* <a href="http://sass-lang.com/"><h2>Sass</h2></a>
+* <a href="http://lesscss.org/"><h2>Less</h2></a>
+
+---
+class:middle
+##Learn css frameworks 
+
+* <a href="http://getbootstrap.com/"><h2>Bootstrap</h2></a>
+* <a href="http://foundation.zurb.com/"><h2>Foundation</h2></a>
+* <a href='http://materializecss.com/'><h2>MaterializeCSS</h2></a>
+
+---
+class: center, middle
+#learn source code of libraries
+
+---
+class: center, middle
+#Be on the cutting age of technoogies
+
+	</textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
